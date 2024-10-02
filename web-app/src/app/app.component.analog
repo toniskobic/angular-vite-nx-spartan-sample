@@ -1,0 +1,35 @@
+<script lang="ts">
+import {
+  signal,
+} from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
+import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
+import { HlmLabelDirective } from '@spartan-ng/ui-label-helm';
+
+defineMetadata({
+  selector: "web-app-root",
+  imports: [HlmButtonDirective, HlmInputDirective, HlmLabelDirective, ReactiveFormsModule]
+});
+
+const name = signal('');
+
+const nameControl = new FormControl('', { nonNullable: true });
+
+async function submit() {
+  name.set(this.nameControl.value);
+}
+</script>
+
+<template>
+  <h1 class="text-center p-1 text-3xl">Hello {{ name() }}</h1>
+  <div class="flex justify-center gap-4">
+  <div class="flex flex-col gap-4">
+    <label hlmLabel>
+      Name
+      <input hlmInput [formControl]="nameControl" />
+    </label>
+    <button hlmBtn (click)="submit()">Submit</button>
+    </div>
+  </div>
+</template>

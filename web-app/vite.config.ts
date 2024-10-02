@@ -22,7 +22,14 @@ export default defineConfig(({ mode }) => {
         allow: [searchForWorkspaceRoot(process.cwd()), '.'],
       },
     },
-    plugins: [angular(), nxViteTsPaths()] as Plugin[],
+    plugins: [
+      angular({
+        experimental: {
+          supportAnalogFormat: true,
+        },
+      }),
+      nxViteTsPaths(),
+    ] as Plugin[],
     test: {
       globals: true,
       environment: 'jsdom',
