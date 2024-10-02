@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 
-import analog from '@analogjs/platform';
+import angular from '@analogjs/vite-plugin-angular';
 import { defineConfig, Plugin, searchForWorkspaceRoot } from 'vite';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 
@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => {
         allow: [searchForWorkspaceRoot(process.cwd()), '.'],
       },
     },
-    plugins: [analog(), nxViteTsPaths()] as Plugin[],
+    plugins: [angular(), nxViteTsPaths()] as Plugin[],
     test: {
       globals: true,
       environment: 'jsdom',
