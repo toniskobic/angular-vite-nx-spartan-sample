@@ -7,6 +7,7 @@ module.exports = {
   content: [
     join(__dirname, 'index.html'),
     join(__dirname, 'src/**/!(*.stories|*.spec).{ts,html,analog}'),
+    'libs/ui/**/*.directive.ts',
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
